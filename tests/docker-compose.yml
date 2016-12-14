@@ -2,6 +2,7 @@ version: '2'
 services:
   redis:
     image: redis
+    entrypoint: tail -f /root/.bashrc
     networks:
       comm:
         aliases:
