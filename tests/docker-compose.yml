@@ -3,6 +3,8 @@ services:
   redis:
     image: redis
     entrypoint: tail -f /root/.bashrc
+    volumes:
+      - ../../:/logger/
     networks:
       comm:
         aliases:
