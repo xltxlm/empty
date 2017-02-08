@@ -1,4 +1,5 @@
 cd %~pd0
+chcp 65001
 rem 第一步:安装
 rem npm install -g browser-sync
 rem 第二步:启动服务
