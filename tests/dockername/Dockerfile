@@ -9,3 +9,7 @@ RUN     cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
 EXPOSE 9092
 
 CMD cd /usr/local/kafka &&  bin/zookeeper-server-start.sh config/zookeeper.properties && bin/kafka-server-start.sh config/server.properties
+
+#清理掉中间过程文件
+RUN     apt-get clean \
+        && rm -rf /var/lib/apt/lists/*
