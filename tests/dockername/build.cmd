@@ -1,4 +1,5 @@
 cd %~dp0
+chcp 65001
 docker build -t docker-kafka:latest .
 
 docker rm -f kafka-test
