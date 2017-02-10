@@ -9,8 +9,18 @@
 //1:杀掉全部活着的的容器
 $containers = shell_exec("docker ps -a");
 foreach (explode("\n", $containers) as $container) {
-    $containers2 = explode(" ", $container);
-    if ($containers2[0]) {
+    //数据备份容器不能删除
+
+    $containers2 = explode("  ", $container);
+    $containers2 = array_diff($containers2, ['']);
+    $containers3 = [];
+    foreach ($containers2 as $item) {
+        $containers3[] = $item;
+    }
+    if ($containers3[6] == 'backup') {
+        continue;
+    }
+    if ($containers3[0]) {
         $cmd1 = "docker rm -f  {$containers2[0]}";
         echo $cmd1." [$containers]\n";
         shell_exec($cmd1);
