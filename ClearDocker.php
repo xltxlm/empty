@@ -12,6 +12,7 @@ foreach (explode("\n", $containers) as $container) {
     $containers2 = explode(" ", $container);
     if ($containers2[0]) {
         $cmd1 = "docker rm -f  {$containers2[0]}";
+        echo $cmd1." [$containers]\n";
         shell_exec($cmd1);
     }
 }
@@ -21,8 +22,13 @@ foreach (explode("\n", $images) as $image) {
     $images2 = explode('       ', $image);
     $images2 = array_diff($images2, ['']);
     $images2 = array_map('trim', $images2);
-    if ($images2[0] == '<none>') {
-        $cmd = "docker rmi -f {$images2[4]}";
+    $images3 = [];
+    foreach ($images2 as $item) {
+        $images3[] = $item;
+    }
+    if ($images3[0] == '<none>' || $images3[1] == '<none>') {
+        $cmd = "docker rmi -f {$images3[2]}";
+        echo $cmd."[images]\n";
         shell_exec($cmd);
     }
 }
