@@ -2,6 +2,7 @@ FROM openjdk:latest
 COPY deb.list /etc/apt/sources.list
 COPY / /root/
 
+#版本号
 RUN echo "v@"$(date +%Y%m%d%H%M%S) >/v
 RUN     cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
         && rm -f /etc/apt/sources.list.d/* \
