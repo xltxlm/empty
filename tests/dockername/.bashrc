@@ -2,9 +2,9 @@
 # .bashrc
 #$Id: .bashrc 519 2014-05-27 11:29:07Z sh_xlt $
 # Source global definitions
-#if [ -f /etc/bashrc ]; then
-#        . /etc/bashrc
-#fi
+if [ -f /etc/bashrc ]; then
+        . /etc/bashrc
+fi
 uniqmd5=`cat /proc/sys/kernel/random/uuid`
 
 export ip=`ip addr | grep -v "127.0.0.1" | grep "inet " | awk -F" " '{print $2}' | awk -F"/" '{print $1}' | head -n1`
