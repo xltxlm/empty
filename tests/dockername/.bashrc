@@ -26,4 +26,4 @@ umask 002
 alias dk='netstat -tnlp'
 alias chmodx='find ./ -name "*.sh" | xargs chmod +x'
 alias ll='ls -l --color=auto'
-
+alias phpunit="phpunit  --bootstrap /var/www/html/vendor/autoload.php"
