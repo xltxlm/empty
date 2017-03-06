@@ -15,7 +15,7 @@ export GREP_COLOR='1;31'
 # User specific aliases and functions
 
 export LANG=zh_CN.utf-8
-export PS1="\[\e[36;1m\]\A \u@\[\e[32;1m\]$ip \w> \[\e[0m\]"
+export PS1="\[\e[36;1m\]\A \u@\[\e[32;1m\]\[[$HOSTNAME\]]$ip \w> \[\e[0m\]"
 
 
 #文件创建的权限.同组也可以进行修改
