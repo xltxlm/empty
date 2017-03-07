@@ -37,8 +37,23 @@ foreach (explode("\n", $images) as $image) {
         $images3[] = $item;
     }
     if ($images3[0] == '<none>' || $images3[1] == '<none>') {
-        $cmd = "docker rmi -f {$images3[2]}";
+        $cmd = "docker rmi rm {$images3[2]}";
         echo $cmd."[images]\n";
         shell_exec($cmd);
     }
+}
+
+//2:第3步，清除掉数据卷
+$images = shell_exec("docker volume ls");
+foreach (explode("\n", $images) as $image) {
+    $images2 = explode('       ', $image);
+    $images2 = array_diff($images2, ['']);
+    $images2 = array_map('trim', $images2);
+    $images3 = [];
+    foreach ($images2 as $item) {
+        $images3[] = $item;
+    }
+    $cmd = "docker volume rm {$images3[1]}";
+    echo $cmd."[images]\n";
+    shell_exec($cmd);
 }
