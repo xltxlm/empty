@@ -7,7 +7,8 @@ if [ -f /etc/bashrc ]; then
 fi
 uniqmd5=`cat /proc/sys/kernel/random/uuid`
 
-export ip=`ip addr | grep -v "127.0.0.1" | grep "inet " | awk -F" " '{print $2}' | awk -F"/" '{print $1}' | head -n1`
+export ip=`ip addr | grep -v "127.0.0.1" | grep "inet " | awk -F" " '{print $2}' | awk -F"/" '{print $1}' | grep -v '.1$'  | head -n1`
+export ipall=`ip addr | grep -v "127.0.0.1" | grep "inet " | awk -F" " '{print $2}' | awk -F"/" '{print $1}' | grep -v '.1$'  | head -n1`
 
 #grep命令高亮命中的词
 export GREP_OPTIONS='--color=auto'
