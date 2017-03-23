@@ -15,6 +15,22 @@ use xltxlm\crontab\CrontabMaker;
 class CrontabMakerTest extends TestCase
 {
 
+    /** @var  SqlMaker */
+    protected $sqlMaker;
+
+    public function setUp()
+    {
+        $this->sqlMaker = (new SqlMaker(Base::class))
+            ->setCrontabDir(__DIR__)
+            ->setDbconfig(new KuaigengReview());
+    }
+
+    public function testservicequality_456buf_time()
+    {
+        $this->sqlMaker
+            ->setSqlFile(__DIR__.'/../SQL/servicequality_456buf_time.sql')
+            ->__invoke();
+    }
 
     public function test()
     {

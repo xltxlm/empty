@@ -8,7 +8,7 @@ fi
 uniqmd5=`cat /proc/sys/kernel/random/uuid`
 
 export ip=`ip addr | grep -v "127.0.0.1" | grep "inet " | awk -F" " '{print $2}' | awk -F"/" '{print $1}' | grep -v '.1$'  | head -n1`
-export ipall=`ip addr | grep -v "127.0.0.1" | grep "inet " | awk -F" " '{print $2}' | awk -F"/" '{print $1}' | grep -v '.1$'  | head -n1`
+export ipall=`ip addr | grep -v "127.0.0.1" | grep "inet " | awk -F" " '{print $2}' | awk -F"/" '{print $1}' | grep -v '.1$' | awk -v RS=''  '{gsub("\n"," "); print }' `
 
 #grep命令高亮命中的词
 export GREP_OPTIONS='--color=auto'
@@ -16,7 +16,7 @@ export GREP_COLOR='1;31'
 # User specific aliases and functions
 
 export LANG=zh_CN.utf-8
-export PS1="\[\e[36;1m\]\A \u@\[\e[32;1m\]\[[$HOSTNAME\]]$ip \w> \[\e[0m\]"
+export PS1="\[\e[35;1m\]\A \u@${ipall} \w> \[\e[0m\]"
 
 
 #文件创建的权限.同组也可以进行修改
