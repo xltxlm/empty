@@ -9,7 +9,8 @@
   ],
   "require": {
     "php": ">=7.0",
-    "xltxlm/helper": "*"
+    "xltxlm/helper": "*",
+    "xltxlm/deployer": "*"
   },
   "autoload": {
     "psr-4": {
