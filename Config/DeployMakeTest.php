@@ -41,7 +41,6 @@ class DeployMakeTest extends TestCase
             ->setEnvFile("env_file.env")
             ->setCopyDockerVolumes($code);
         $deployMake
-            ->setGit("http://10.165.99.238:8809/xialintai/pushconfig-deploy.git")
             ->setTesthost("root@116.62.32.197")
             ->setOnlinehost('root@118.178.129.189')
             ->setProjectDocker($code)
