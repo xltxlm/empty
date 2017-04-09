@@ -2,3 +2,4 @@
 deployer
 temp
 php_errors.log
+.lock
