@@ -7,7 +7,7 @@
  */
 
 //1:杀掉全部活着的的容器
-$containers = shell_exec("docker ps -a");
+$containers = shell_exec("docker ps -a -f status=exited");
 foreach (explode("\n", $containers) as $container) {
     //数据备份容器不能删除
 
@@ -17,15 +17,14 @@ foreach (explode("\n", $containers) as $container) {
     foreach ($containers2 as $item) {
         $containers3[] = $item;
     }
-    if ($containers3[6] == 'backup') {
-        continue;
-    }
     if ($containers3[0]) {
         $cmd1 = "docker rm -f  {$containers2[0]}";
         echo $cmd1." [$containers]\n";
         shell_exec($cmd1);
     }
 }
+
+//docker images | awk '{print $3}' | xargs docker rmi
 //2:第二步，清除掉编译中留下的过程无名字docker镜像
 $images = shell_exec("docker images");
 foreach (explode("\n", $images) as $image) {
@@ -42,7 +41,7 @@ foreach (explode("\n", $images) as $image) {
         shell_exec($cmd);
     }
 }
-
+//docker volume ls | awk '{print $2}' | xargs docker volume rm
 //2:第3步，清除掉数据卷
 $images = shell_exec("docker volume ls");
 foreach (explode("\n", $images) as $image) {
